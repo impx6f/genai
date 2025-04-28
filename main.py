@@ -1,10 +1,13 @@
 from langchain_groq import ChatGroq
 from langchain_community.document_loaders import WebBaseLoader
 from langchain_core.prompts import PromptTemplate
-
+from dotenv import load_dotenv
 import streamlit as st
+import os
 
-chat = ChatGroq(groq_api_key="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",model_name="llama-3.3-70b-versatile")
+load_dotenv()
+mykey=os.getenv("GROQ_API-KEY")
+chat = ChatGroq(groq_api_key=mykey,model_name="llama-3.3-70b-versatile")
 
 url_text=st.text_input("Enter a URL")
 user_msg=st.text_input("Enter your message")
